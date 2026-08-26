@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "version": 1,
+    "lastModified": "2026-08-26T00:00:00.000Z",
+    "description": "Coleccion de ejemplo para validar la capa JSON"
+  },
+  "records": [
+    {
+      "id": "example_001",
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
+      "data": {
+        "message": "Hola Mundo"
+      }
+    }
+  ]
+}

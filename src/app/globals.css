@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --ink: #17221d;
+  --muted: #64736b;
+  --paper: #f4f1e8;
+  --lime: #c8f169;
+  --blue: #b5d8ff;
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: 'Manrope', sans-serif;
+}
+
+.hero-shell {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(200, 241, 105, 0.72), transparent 28%),
+    radial-gradient(circle at 85% 78%, rgba(181, 216, 255, 0.8), transparent 32%),
+    var(--paper);
+}
+
+.hero-shell::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgba(23, 34, 29, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(23, 34, 29, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  content: '';
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.hero-glow {
+  position: absolute;
+  width: min(54vw, 560px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(23, 34, 29, 0.15);
+  border-radius: 50%;
+  animation: drift 12s ease-in-out infinite alternate;
+}
+
+.hero-content { width: min(90vw, 760px); text-align: center; }
+.eyebrow, .tech-badge { font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+.eyebrow { margin: 0 0 1.25rem; color: var(--muted); font-size: 0.72rem; }
+.hero-title { display: flex; flex-direction: column; margin: 0; font-size: clamp(4.5rem, 15vw, 10rem); font-weight: 800; letter-spacing: 0; line-height: 0.83; }
+.hero-title span:last-child { color: #376b58; }
+.hero-rule { width: 100%; height: 2px; margin: 2rem 0 1.3rem; background: var(--ink); }
+.hero-subtitle { margin: 0 auto 2rem; color: var(--muted); font-size: clamp(1rem, 2vw, 1.25rem); }
+.tech-badge { display: inline-flex; gap: 0.5rem; align-items: center; padding: 0.65rem 0.9rem; border: 1px solid var(--ink); border-radius: 999px; background: var(--lime); color: var(--ink); font-size: 0.72rem; font-weight: 500; }
+
+@keyframes drift { from { transform: translate(-7%, -4%) rotate(-8deg) scale(0.92); } to { transform: translate(7%, 4%) rotate(8deg) scale(1.08); } }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
