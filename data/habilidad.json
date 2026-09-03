@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "version": 1,
+    "lastModified": "2026-09-02T00:00:00.000Z",
+    "description": "Habilidades del portafolio"
+  },
+  "records": [
+    { "id": "habilidad_001", "createdAt": "2026-09-02T00:00:00.000Z", "updatedAt": "2026-09-02T00:00:00.000Z", "data": { "nombre": "Narrativa transmedia", "grupo": "Narrativa" } },
+    { "id": "habilidad_002", "createdAt": "2026-09-02T00:00:00.000Z", "updatedAt": "2026-09-02T00:00:00.000Z", "data": { "nombre": "Worldbuilding", "grupo": "Narrativa" } },
+    { "id": "habilidad_003", "createdAt": "2026-09-02T00:00:00.000Z", "updatedAt": "2026-09-02T00:00:00.000Z", "data": { "nombre": "Figma", "grupo": "Diseno visual" } },
+    { "id": "habilidad_004", "createdAt": "2026-09-02T00:00:00.000Z", "updatedAt": "2026-09-02T00:00:00.000Z", "data": { "nombre": "Illustrator", "grupo": "Diseno visual" } },
+    { "id": "habilidad_005", "createdAt": "2026-09-02T00:00:00.000Z", "updatedAt": "2026-09-02T00:00:00.000Z", "data": { "nombre": "HTML, CSS y JavaScript", "grupo": "Desarrollo" } },
+    { "id": "habilidad_006", "createdAt": "2026-09-02T00:00:00.000Z", "updatedAt": "2026-09-02T00:00:00.000Z", "data": { "nombre": "TypeScript y Next.js", "grupo": "Desarrollo" } }
+  ]
+}
