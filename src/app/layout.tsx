@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Fraunces, IBM_Plex_Mono, Inter } from 'next/font/google';
+import { CursorGlow } from '@/components/CursorGlow';
 import { Footer } from '@/components/Footer';
 import { LightBeam } from '@/components/LightBeam';
 import { SiteHeader } from '@/components/SiteHeader';
@@ -25,6 +26,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           <a className="skip-link" href="#contenido">Saltar al contenido</a>
           <SiteHeader sitio={sitio} />
           <LightBeam />
+          <CursorGlow />
           {children}
           <Footer sitio={sitio} />
         </ThemeProvider>
