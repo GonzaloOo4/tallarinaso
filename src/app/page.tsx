@@ -1,5 +1,6 @@
 import { ColorableName } from '@/components/ColorableName';
 import { ColorimetriaPicker } from '@/components/ColorimetriaPicker';
+import { LiquidText } from '@/components/LiquidText';
 import { MarqueeBanner } from '@/components/MarqueeBanner';
 import { getCuadrosPublicados, getHabilidades, getSitio } from '@/lib/portfolio';
 
@@ -7,7 +8,7 @@ export default async function Home() {
   const [sitio, habilidades, cuadros] = await Promise.all([getSitio(), getHabilidades(), getCuadrosPublicados()]);
   const grupos = Object.entries(Object.groupBy(habilidades, ({ grupo }) => grupo));
   return <main id="contenido" className="site-main">
-    <section className="hero scene" aria-labelledby="hero-title"><h1 id="hero-title"><ColorableName>{sitio.nombre}</ColorableName></h1><p>{sitio.hero}</p></section>
+    <section className="hero scene" aria-labelledby="hero-title"><LiquidText className="hero-liquid"><h1 id="hero-title"><ColorableName className="hero-name">{sitio.nombre}</ColorableName></h1><p>{sitio.hero}</p></LiquidText></section>
     <MarqueeBanner />
     <section className="scene" id="sobre-mi" aria-labelledby="sobre-mi-title"><h2 id="sobre-mi-title">Sobre mí</h2><div className="prose">{sitio.bio.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></section>
     <section className="scene" id="proyectos" aria-labelledby="proyectos-title"><h2 id="proyectos-title">Proyectos</h2>{cuadros.length === 0 ? <p className="meta">Aún no hay cuadros publicados.</p> : <div className="project-list">{cuadros.map((cuadro) => <article className="project-box" key={cuadro.slug}><span className="project-number">Cuadro {cuadro.numero}</span><div><h3><a className="editorial-link" href={`/proyectos/${cuadro.slug}`}>{cuadro.titulo}</a></h3><p className="meta">{cuadro.rol} · {cuadro.anio} · {cuadro.formato.join(' · ')}</p><p>{cuadro.resumen}</p><a className="arrow-link" href={`/proyectos/${cuadro.slug}`}>Ver proyecto completo <span aria-hidden="true">→</span></a></div></article>)}</div>}</section>

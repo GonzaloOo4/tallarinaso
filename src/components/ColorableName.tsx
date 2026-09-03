@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
 
-export const ColorableName = (props: HTMLAttributes<HTMLSpanElement>) => (
-  <span className="colorable-name" {...props} />
+export const ColorableName = ({ className, ...props }: HTMLAttributes<HTMLSpanElement>) => (
+  <span className={cn('colorable-name', className)} {...props} />
 );
