@@ -10,7 +10,7 @@ const applyColor = (color: string) => {
   document.documentElement.style.setProperty('--name-color', color);
 };
 
-export const ColorimetriaPicker = ({ compact = false }: { compact?: boolean }) => {
+export const ColorimetriaPicker = ({ onlyButtons = false }: { onlyButtons?: boolean }) => {
   const [color, setColor] = useState('#4A6B52');
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const ColorimetriaPicker = ({ compact = false }: { compact?: boolean }) =
   };
 
   return (
-    <div className={cn('colorimetria', compact && 'colorimetria-compact')}>
+    <div className={cn('colorimetria', onlyButtons && 'colorimetria-buttons-only')}>
       <div className="colorimetria-swatches" role="group" aria-label="Colores predefinidos">
         {SWATCHES.map((swatch) => (
           <button
@@ -42,15 +42,17 @@ export const ColorimetriaPicker = ({ compact = false }: { compact?: boolean }) =
           />
         ))}
       </div>
-      <label className="colorimetria-custom">
-        <span className="meta">Color personalizado</span>
-        <input
-          type="color"
-          value={color}
-          onChange={(event) => handleChange(event.target.value)}
-          aria-label="Elegir color personalizado para mi nombre"
-        />
-      </label>
+      {!onlyButtons && (
+        <label className="colorimetria-custom">
+          <span className="meta">Color personalizado</span>
+          <input
+            type="color"
+            value={color}
+            onChange={(event) => handleChange(event.target.value)}
+            aria-label="Elegir color personalizado para mi nombre"
+          />
+        </label>
+      )}
     </div>
   );
 };
