@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const STORAGE_KEY = 'nombre-color';
 const SWATCHES = ['#4A6B52', '#B5502F', '#2F5FB5', '#B5992F', '#8A2FB5', '#131311'];
@@ -9,7 +10,7 @@ const applyColor = (color: string) => {
   document.documentElement.style.setProperty('--name-color', color);
 };
 
-export const ColorimetriaPicker = () => {
+export const ColorimetriaPicker = ({ compact = false }: { compact?: boolean }) => {
   const [color, setColor] = useState('#4A6B52');
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export const ColorimetriaPicker = () => {
   };
 
   return (
-    <div className="colorimetria">
+    <div className={cn('colorimetria', compact && 'colorimetria-compact')}>
       <div className="colorimetria-swatches" role="group" aria-label="Colores predefinidos">
         {SWATCHES.map((swatch) => (
           <button

@@ -1,5 +1,4 @@
 import { ColorableName } from '@/components/ColorableName';
-import { ColorimetriaPicker } from '@/components/ColorimetriaPicker';
 import { LiquidText } from '@/components/LiquidText';
 import { MarqueeBanner } from '@/components/MarqueeBanner';
 import { getCuadrosPublicados, getHabilidades, getSitio } from '@/lib/portfolio';
@@ -13,7 +12,6 @@ export default async function Home() {
     <section className="scene" id="sobre-mi" aria-labelledby="sobre-mi-title"><h2 id="sobre-mi-title">Sobre mí</h2><div className="prose">{sitio.bio.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></section>
     <section className="scene" id="proyectos" aria-labelledby="proyectos-title"><h2 id="proyectos-title">Proyectos</h2>{cuadros.length === 0 ? <p className="meta">Aún no hay cuadros publicados.</p> : <div className="project-list">{cuadros.map((cuadro) => <article className="project-box" key={cuadro.slug}><span className="project-number">Cuadro {cuadro.numero}</span><div><h3><a className="editorial-link" href={`/proyectos/${cuadro.slug}`}>{cuadro.titulo}</a></h3><p className="meta">{cuadro.rol} · {cuadro.anio} · {cuadro.formato.join(' · ')}</p><p>{cuadro.resumen}</p><a className="arrow-link" href={`/proyectos/${cuadro.slug}`}>Ver proyecto completo <span aria-hidden="true">→</span></a></div></article>)}</div>}</section>
     <section className="scene" id="habilidades" aria-labelledby="habilidades-title"><h2 id="habilidades-title">Habilidades</h2><div className="skill-groups">{grupos.map(([grupo, items]) => <div key={grupo}><p className="meta">{grupo}</p><div className="skill-grid">{items?.map((habilidad) => <div className="skill-card" key={habilidad.nombre}>{habilidad.nombre}</div>)}</div></div>)}</div></section>
-    <section className="scene" id="colorimetria" aria-labelledby="colorimetria-title"><h2 id="colorimetria-title">Colorimetría</h2><p className="section-copy">Elige el color de mi nombre en el título principal.</p><ColorimetriaPicker /></section>
     <section className="scene" id="contacto" aria-labelledby="contacto-title"><h2 id="contacto-title">Contacto</h2><div className="contact-list">{sitio.canales.map((canal) => <a className="contact-row" href={canal.url} key={canal.url}><span className="meta">{canal.etiqueta}</span><span>{canal.valor}</span><span aria-hidden="true">→</span></a>)}</div></section>
   </main>;
 }
