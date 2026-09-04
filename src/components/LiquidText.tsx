@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
-const HOVER_SCALE = 26;
+const HOVER_SCALE = 6;
 const LERP_SPEED = 0.12;
 
 export const LiquidText = ({ children, className }: { children: React.ReactNode; className?: string }) => {
