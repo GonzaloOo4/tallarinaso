@@ -19,7 +19,7 @@ export const ThemeToggle = () => {
       variant="quiet"
       type="button"
     >
-      <span aria-hidden="true">{mounted ? (isDark ? 'sun' : 'moon') : ''}</span>
+      <span aria-hidden="true">{mounted ? (isDark ? '☀️ sun' : '🌙 moon') : ''}</span>
     </Button>
   );
 };
