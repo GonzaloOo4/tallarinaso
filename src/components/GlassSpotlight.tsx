@@ -14,7 +14,6 @@ export const GlassSpotlight = () => {
         active?.classList.remove('is-lit');
         active = target;
         active?.classList.add('is-lit');
-        document.body.classList.toggle('over-glass', Boolean(target));
       }
       if (target) {
         const rect = target.getBoundingClientRect();
