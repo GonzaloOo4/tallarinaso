@@ -16,11 +16,6 @@ export const GlassSpotlight = () => {
         active?.classList.add('is-lit');
         document.body.classList.toggle('over-glass', Boolean(target));
       }
-      if (target) {
-        const rect = target.getBoundingClientRect();
-        target.style.setProperty('--spot-x', `${((event.clientX - rect.left) / rect.width) * 100}%`);
-        target.style.setProperty('--spot-y', `${((event.clientY - rect.top) / rect.height) * 100}%`);
-      }
     };
 
     window.addEventListener('pointermove', handleMove);
