@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Bebas_Neue, Fraunces, IBM_Plex_Mono, Inter } from 'next/font/google';
 import { CursorGlow } from '@/components/CursorGlow';
 import { Footer } from '@/components/Footer';
+import { GlassSpotlight } from '@/components/GlassSpotlight';
 import { LightBeam } from '@/components/LightBeam';
 import { SiteHeader } from '@/components/SiteHeader';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           <SiteHeader sitio={sitio} />
           <LightBeam />
           <CursorGlow />
+          <GlassSpotlight />
           {children}
           <Footer sitio={sitio} />
         </ThemeProvider>
