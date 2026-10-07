@@ -1,36 +1,46 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
 const STORAGE_KEY = 'nombre-color';
-const SWATCHES = ['#4A6B52', '#B5502F', '#2F5FB5', '#B5992F', '#8A2FB5', '#131311'];
+const DEFAULT_COLOR = '#4A6B52';
+const DARK_COLOR = '#131311';
+const SWATCHES = [DEFAULT_COLOR, '#B5502F', '#2F5FB5', '#B5992F', '#8A2FB5', DARK_COLOR];
 
-const applyColor = (color: string) => {
-  document.documentElement.style.setProperty('--name-color', color);
+const applyColor = (color: string | null) => {
+  if (color) {
+    document.documentElement.style.setProperty('--name-color', color);
+  } else {
+    document.documentElement.style.removeProperty('--name-color');
+  }
 };
 
 export const ColorimetriaPicker = ({ onlyButtons = false }: { onlyButtons?: boolean }) => {
-  const [color, setColor] = useState('#4A6B52');
+  const { resolvedTheme } = useTheme();
+  const [color, setColor] = useState(DEFAULT_COLOR);
 
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
     if (saved) {
       setColor(saved);
-      applyColor(saved);
     }
   }, []);
 
+  useEffect(() => {
+    applyColor(resolvedTheme === 'dark' && color === DARK_COLOR ? null : color);
+  }, [color, resolvedTheme]);
+
   const handleChange = (next: string) => {
     setColor(next);
-    applyColor(next);
     window.localStorage.setItem(STORAGE_KEY, next);
   };
 
   return (
     <div className={cn('colorimetria', onlyButtons && 'colorimetria-buttons-only')}>
       <div className="colorimetria-swatches" role="group" aria-label="Colores predefinidos">
-        {SWATCHES.map((swatch) => (
+        {SWATCHES.filter((swatch) => resolvedTheme !== 'dark' || swatch !== DARK_COLOR).map((swatch) => (
           <button
             key={swatch}
             type="button"
