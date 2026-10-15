@@ -35,8 +35,11 @@ export const HeroCrystal = () => (
     <div className="crystal-glow" />
     <svg className="crystal-mesh" viewBox="0 0 280 250" aria-hidden="true">
       {LINKS.map(([a, b], index) => {
-        const [x1, y1] = NODES[a];
-        const [x2, y2] = NODES[b];
+        const from = NODES[a];
+        const to = NODES[b];
+        if (!from || !to) return null;
+        const [x1, y1] = from;
+        const [x2, y2] = to;
         return (
           <line key={index} className="crystal-mesh-line" x1={x1} y1={y1} x2={x2} y2={y2}>
             <animate attributeName="stroke-dashoffset" from="0" to="-24" dur={`${3 + (index % 4)}s`} begin={`${index * 0.2}s`} repeatCount="indefinite" />
