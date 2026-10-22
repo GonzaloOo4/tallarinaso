@@ -1,11 +1,12 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { after } from 'next/server';
 import { z } from 'zod';
 import { hashPassword, verifyPassword } from '@/lib/auth/password';
 import { createSession, destroySession, requireAdmin } from '@/lib/auth/session';
+import { CONFIG_TAG, RESPETAR_REDUCIR_ANIMACIONES } from '@/lib/configuracion';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 export type LoginState = { error?: string };
@@ -122,6 +123,19 @@ export async function setCommentStatus(formData: FormData) {
   const { error } = await db.from('project_comments').update({ status }).eq('id', id);
   if (error) throw new Error('No se pudo actualizar el comentario.');
   revalidatePath('/admin');
+}
+
+export async function setRespetarReducirAnimaciones(formData: FormData) {
+  const { db } = await requireAdmin();
+  const valor = z.enum(['true', 'false']).parse(formData.get('respetar')) === 'true';
+  const { error } = await db.from('configuracion').upsert({
+    clave: RESPETAR_REDUCIR_ANIMACIONES,
+    valor,
+    updated_at: new Date().toISOString(),
+  });
+  if (error) throw new Error('No se pudo guardar el ajuste.');
+  revalidateTag(CONFIG_TAG);
+  revalidatePath('/', 'layout');
 }
 
 export async function deleteComment(formData: FormData) {

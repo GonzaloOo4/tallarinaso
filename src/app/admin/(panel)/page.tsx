@@ -1,6 +1,7 @@
 import { getCuadrosPublicados } from '@/lib/portfolio';
 import { requireAdmin } from '@/lib/auth/session';
-import { deleteComment, setCommentStatus } from '../actions';
+import { readRespetarReducirAnimaciones } from '@/lib/configuracion';
+import { deleteComment, setCommentStatus, setRespetarReducirAnimaciones } from '../actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,7 +13,8 @@ const dateFormat = new Intl.DateTimeFormat('es-CO', { dateStyle: 'medium', timeS
 
 export default async function AdminDashboard() {
   const { db } = await requireAdmin();
-  const [cuadros, statsResult, commentsResult] = await Promise.all([
+  const [respetarReducirAnimaciones, cuadros, statsResult, commentsResult] = await Promise.all([
+    readRespetarReducirAnimaciones(),
     getCuadrosPublicados(),
     db.from('project_stats').select('*').returns<Stat[]>(),
     db.from('project_comments').select('id, project_slug, author_name, body, status, created_at')
@@ -45,6 +47,25 @@ export default async function AdminDashboard() {
         <div className="glass-panel admin-stat"><span>Vistas</span><strong>{totals.views}</strong></div>
         <div className="glass-panel admin-stat"><span>Likes</span><strong>{totals.likes}</strong></div>
         <div className="glass-panel admin-stat"><span>Comentarios pendientes</span><strong>{totals.pending}</strong></div>
+      </section>
+
+      <section className="glass-panel admin-card" aria-labelledby="animaciones-title">
+        <h2 id="animaciones-title">Animaciones del portafolio</h2>
+        <p className="admin-muted">Qué pasa cuando un visitante tiene activado “reducir animaciones” en su sistema (en Windows: Accesibilidad → Efectos visuales → Efectos de animación).</p>
+        <div className="admin-setting">
+          <p>
+            <span className={`admin-badge ${respetarReducirAnimaciones ? '' : 'admin-badge-approved'}`}>{respetarReducirAnimaciones ? 'Encendido' : 'Apagado'}</span>{' '}
+            {respetarReducirAnimaciones
+              ? 'Se respeta su preferencia: se le ocultan las animaciones.'
+              : 'Las animaciones se ven siempre, en cualquier equipo.'}
+          </p>
+          <form action={setRespetarReducirAnimaciones}>
+            <input type="hidden" name="respetar" value={respetarReducirAnimaciones ? 'false' : 'true'} />
+            <button className={respetarReducirAnimaciones ? 'admin-button' : 'admin-link-button'} type="submit">
+              {respetarReducirAnimaciones ? 'Mostrar siempre las animaciones' : 'Respetar “reducir animaciones”'}
+            </button>
+          </form>
+        </div>
       </section>
 
       <section className="glass-panel admin-card" aria-labelledby="proyectos-title">
