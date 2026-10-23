@@ -1,17 +1,21 @@
 import Image from 'next/image';
 import { ColorableName } from '@/components/ColorableName';
+import { Fireflies } from '@/components/Fireflies';
 import { HeroPhrase } from '@/components/HeroPhrase';
 import { LiquidText } from '@/components/LiquidText';
 import { MarqueeBanner } from '@/components/MarqueeBanner';
 import { NameColorCycle, NameColorHint } from '@/components/NameColorCycle';
 import { SeaDetails } from '@/components/SeaDetails';
+import { getRespetarReducirAnimaciones } from '@/lib/configuracion';
 import { getCuadrosPublicados, getHabilidades, getSitio, tienePagina } from '@/lib/portfolio';
 import { cn } from '@/lib/utils';
 
 const listFormat = new Intl.ListFormat('es', { type: 'conjunction' });
 
 export default async function Home() {
-  const [sitio, habilidades, cuadros] = await Promise.all([getSitio(), getHabilidades(), getCuadrosPublicados()]);
+  const [sitio, habilidades, cuadros, respetarReducirAnimaciones] = await Promise.all([
+    getSitio(), getHabilidades(), getCuadrosPublicados(), getRespetarReducirAnimaciones(),
+  ]);
   const grupos = Object.entries(Object.groupBy(habilidades, ({ grupo }) => grupo));
   const contacto = sitio.canales[0];
   // Los cuadros vienen ordenados; el de mayor orden es el más reciente.
@@ -20,6 +24,7 @@ export default async function Home() {
   return (
     <main id="contenido" className="site-main">
       <section className="hero hero-editorial" aria-labelledby="hero-title">
+        <Fireflies respectReducedMotion={respetarReducirAnimaciones} />
         <div className="hero-copy">
           <p className="eyebrow">Diseño digital{sitio.ubicacion && ` · ${sitio.ubicacion}`}</p>
           <LiquidText className="hero-liquid">
