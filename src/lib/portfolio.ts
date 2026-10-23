@@ -21,6 +21,12 @@ export const getHabilidades = async (): Promise<Habilidad[]> => {
   return collection.records.map(({ data }) => data);
 };
 
+/** Un proyecto tiene página propia cuando documenta proceso y resultado. */
+export const tienePagina = (cuadro: Cuadro) => Boolean(cuadro.proceso?.length && cuadro.resultado?.length);
+
+export const getCuadroPublicado = async (slug: string) =>
+  (await getCuadrosPublicados()).find((cuadro) => cuadro.slug === slug) ?? null;
+
 export const getCuadrosPublicados = async (): Promise<Cuadro[]> => {
   const collection = CuadroCollectionSchema.parse(await readDataFile('cuadro.json'));
   return collection.records

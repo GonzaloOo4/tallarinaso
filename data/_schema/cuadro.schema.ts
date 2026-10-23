@@ -6,6 +6,13 @@ export const ImagenSchema = z.object({
   caption: z.string().optional(),
 });
 
+// Bloque de contenido de la página del proyecto: un título con texto y/o una lista.
+export const BloqueSchema = z.object({
+  titulo: z.string().min(1),
+  texto: z.string().min(1).optional(),
+  items: z.array(z.object({ titulo: z.string().min(1), texto: z.string().min(1) })).optional(),
+});
+
 export const CuadroSchema = z.object({
   numero: z.string().regex(/^\d{2}$/),
   slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
@@ -21,8 +28,8 @@ export const CuadroSchema = z.object({
   portada: ImagenSchema.optional(),
   // Proyecto alojado en otra web: la tarjeta enlaza ahí en vez de a /proyectos/[slug].
   enlace: z.string().url().optional(),
-  proceso: z.array(z.unknown()).optional(),
-  resultado: z.array(z.unknown()).optional(),
+  proceso: z.array(BloqueSchema).optional(),
+  resultado: z.array(BloqueSchema).optional(),
   publicado: z.boolean(),
   orden: z.number().int().optional(),
 }).superRefine((cuadro, context) => {
@@ -48,3 +55,4 @@ export const CuadroCollectionSchema = z.object({
 });
 
 export type Cuadro = z.infer<typeof CuadroSchema>;
+export type Bloque = z.infer<typeof BloqueSchema>;

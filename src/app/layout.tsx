@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Gonzalo - Diseñador de sistemas narrativos',
+  title: 'Gonzalo Zuñiga — Diseño digital y sistemas narrativos',
   description: 'Diseño digital, investigación y narrativa convertidos en sistemas claros.',
 };
 

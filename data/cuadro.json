@@ -1,14 +1,14 @@
 {
   "_meta": {
     "version": 1,
-    "lastModified": "2026-10-23T19:03:43.866Z",
+    "lastModified": "2026-10-23T19:31:50.358Z",
     "description": "Cuadros del portafolio"
   },
   "records": [
     {
       "id": "cuadro_935b9178-a71d-41e1-a1c6-f123acae88d9",
       "createdAt": "2026-10-23T17:55:00.464Z",
-      "updatedAt": "2026-10-23T19:03:43.866Z",
+      "updatedAt": "2026-10-23T19:31:50.358Z",
       "data": {
         "numero": "01",
         "slug": "caminata-por-el-tiempo",
@@ -37,7 +37,83 @@
           "Melany S. Mendoza",
           "Daniel Genes"
         ],
-        "ambiente": "mar"
+        "ambiente": "mar",
+        "proceso": [
+          {
+            "titulo": "El concepto",
+            "items": [
+              {
+                "titulo": "¿Quién?",
+                "texto": "Personas de todas las edades, locales y turistas; sobre todo familias y grupos de amigos con interés en la historia y la naturaleza que buscan experiencias culturales al aire libre."
+              },
+              {
+                "titulo": "¿Dónde?",
+                "texto": "Playa Blanca, junto al Parque Nacional Natural Tayrona: un entorno natural que también puede funcionar como espacio de memoria y aprendizaje."
+              },
+              {
+                "titulo": "¿Cuándo?",
+                "texto": "Al atardecer, cuando baja el calor y la luz acompaña el recorrido; también en temporadas y festividades como las Fiestas del Mar."
+              },
+              {
+                "titulo": "¿Para qué?",
+                "texto": "Para conectar a los visitantes con la historia de Santa Marta mientras disfrutan el paisaje, a través de un aprendizaje interactivo que deje un vínculo con la cultura local."
+              },
+              {
+                "titulo": "¿Cómo?",
+                "texto": "Con estaciones de mobiliario urbano a lo largo de la playa; cada una representa una época de la historia marítima de la ciudad y combina información con interacción."
+              }
+            ]
+          },
+          {
+            "titulo": "El recorrido del proyecto",
+            "items": [
+              {
+                "titulo": "Primer corte",
+                "texto": "Fuentes secundarias, design thinking y definición del concepto."
+              },
+              {
+                "titulo": "Segundo corte",
+                "texto": "Desarrollo formal, referentes, participación y parámetros de diseño."
+              },
+              {
+                "titulo": "Tercer corte",
+                "texto": "Definición de detalles, diseño de la experiencia y su dimensión emocional, y una segunda ronda de entrevistas."
+              }
+            ]
+          }
+        ],
+        "resultado": [
+          {
+            "titulo": "Surcando entre la cultura",
+            "texto": "Una ruta que convierte Playa Blanca en un museo al aire libre, con cinco estaciones:",
+            "items": [
+              {
+                "titulo": "Tour guiado",
+                "texto": "Una caminata ecoturística por la playa, acompañada por un guía y en diálogo con la gente del lugar."
+              },
+              {
+                "titulo": "Bancos informativos",
+                "texto": "Bancos con paneles que cuentan cada periodo de la ciudad, desde su fundación hasta hoy."
+              },
+              {
+                "titulo": "Realidad aumentada",
+                "texto": "Desde el celular o puntos de acceso, proyecciones de la historia marítima y de la vida cotidiana de Santa Marta en distintas épocas."
+              },
+              {
+                "titulo": "Esculturas interactivas",
+                "texto": "Instalaciones que se pueden tocar y explorar, como réplicas de anclas antiguas e instrumentos de navegación."
+              },
+              {
+                "titulo": "Anfiteatro natural",
+                "texto": "El cierre en la arena: un espectáculo audiovisual con imagen, música y narración sobre la fundación y el desarrollo de la ciudad."
+              }
+            ]
+          },
+          {
+            "titulo": "El cierre",
+            "texto": "La experiencia termina con una invitación a reflexionar sobre lo aprendido mientras el sol se oculta en el mar: aprendizaje y emoción unidos al lugar."
+          }
+        ]
       }
     }
   ]

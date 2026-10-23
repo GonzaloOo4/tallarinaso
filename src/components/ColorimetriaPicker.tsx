@@ -18,23 +18,33 @@ const applyColor = (color: string | null) => {
 };
 
 export const ColorimetriaPicker = ({ onlyButtons = false }: { onlyButtons?: boolean }) => {
-  const { resolvedTheme } = useTheme();
+  const { resolvedTheme: theme } = useTheme();
   const [color, setColor] = useState(DEFAULT_COLOR);
+  const [mounted, setMounted] = useState(false);
+  // El tema solo se conoce en el navegador; antes de montar se usa el mismo HTML que el servidor.
+  const resolvedTheme = mounted ? theme : undefined;
 
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      setColor(saved);
+    setMounted(true);
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) setColor(saved);
+    } catch {
+      // Sin almacenamiento local se usa el color por defecto.
     }
   }, []);
 
   useEffect(() => {
-    applyColor(resolvedTheme === 'dark' && color === DARK_COLOR ? null : color);
-  }, [color, resolvedTheme]);
+    if (mounted) applyColor(resolvedTheme === 'dark' && color === DARK_COLOR ? null : color);
+  }, [color, resolvedTheme, mounted]);
 
   const handleChange = (next: string) => {
     setColor(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      // El color se aplica igual aunque no se pueda guardar.
+    }
   };
 
   return (
