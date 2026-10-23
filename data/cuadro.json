@@ -1,14 +1,14 @@
 {
   "_meta": {
     "version": 1,
-    "lastModified": "2026-10-23T19:31:50.358Z",
+    "lastModified": "2026-10-23T20:55:03.199Z",
     "description": "Cuadros del portafolio"
   },
   "records": [
     {
       "id": "cuadro_935b9178-a71d-41e1-a1c6-f123acae88d9",
       "createdAt": "2026-10-23T17:55:00.464Z",
-      "updatedAt": "2026-10-23T19:31:50.358Z",
+      "updatedAt": "2026-10-23T20:55:03.199Z",
       "data": {
         "numero": "01",
         "slug": "caminata-por-el-tiempo",
@@ -27,7 +27,7 @@
           "Storyboard"
         ],
         "portada": {
-          "src": "/proyectos/oceanicsm-logo.jpg",
+          "src": "/proyectos/oceanicsm.jpg",
           "alt": "Logo de OCEANICSM: faro, palmeras y montañas sobre olas, dentro de un círculo"
         },
         "enlace": "https://melanysmendoza01.wixsite.com/my-site-1/s-projects-side-by-side",
