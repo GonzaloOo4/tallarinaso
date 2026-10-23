@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Fraunces, IBM_Plex_Mono, Inter } from 'next/font/google';
+import { ScrollDepth } from '@/components/ScrollDepth';
+import { SierraLandscape } from '@/components/SierraLandscape';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 
@@ -17,6 +19,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${inter.variable} ${fraunces.variable} ${ibmPlexMono.variable} ${bebasNeue.variable}`}>
+        <SierraLandscape />
+        <ScrollDepth />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -1,5 +1,4 @@
 import { NameColorSync } from '@/components/ColorimetriaPicker';
-import { FallingLeaves } from '@/components/FallingLeaves';
 import { Footer } from '@/components/Footer';
 import { GlassSpotlight } from '@/components/GlassSpotlight';
 import { LightBeam } from '@/components/LightBeam';
@@ -11,7 +10,7 @@ import { getSitio } from '@/lib/portfolio';
 export const revalidate = 30;
 
 const REDUCED_MOTION_CSS =
-  '@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } .falling-leaves { display: none; } }';
+  '@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }';
 
 export default async function SiteLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [sitio, respetarReducirAnimaciones] = await Promise.all([getSitio(), getRespetarReducirAnimaciones()]);
@@ -22,7 +21,6 @@ export default async function SiteLayout({ children }: Readonly<{ children: Reac
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <SiteHeader sitio={sitio} />
       <LightBeam respectReducedMotion={respetarReducirAnimaciones} />
-      <FallingLeaves />
       <GlassSpotlight />
       {children}
       <Footer sitio={sitio} />
