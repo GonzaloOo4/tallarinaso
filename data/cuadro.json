@@ -1,14 +1,14 @@
 {
   "_meta": {
     "version": 1,
-    "lastModified": "2026-10-23T18:12:27.742Z",
+    "lastModified": "2026-10-23T18:29:45.828Z",
     "description": "Cuadros del portafolio"
   },
   "records": [
     {
       "id": "cuadro_935b9178-a71d-41e1-a1c6-f123acae88d9",
       "createdAt": "2026-10-23T17:55:00.464Z",
-      "updatedAt": "2026-10-23T18:12:27.742Z",
+      "updatedAt": "2026-10-23T18:29:45.828Z",
       "data": {
         "numero": "01",
         "slug": "caminata-por-el-tiempo",
@@ -34,7 +34,8 @@
         "publicado": true,
         "orden": 1,
         "coautores": [
-          "Melany S. Mendoza"
+          "Melany S. Mendoza",
+          "Daniel Genes"
         ]
       }
     }
