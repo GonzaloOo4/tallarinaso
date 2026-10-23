@@ -1,14 +1,14 @@
 {
   "_meta": {
     "version": 1,
-    "lastModified": "2026-10-23T20:29:27.737Z",
+    "lastModified": "2026-10-23T20:47:22.369Z",
     "description": "Contenido editorial del sitio"
   },
   "records": [
     {
       "id": "sitio_001",
       "createdAt": "2026-09-02T00:00:00.000Z",
-      "updatedAt": "2026-10-23T20:29:27.737Z",
+      "updatedAt": "2026-10-23T20:47:22.369Z",
       "data": {
         "nombre": "Gonzalo",
         "claim": "Gonzalo Zuñiga — Diseño digital y sistemas narrativos",
@@ -22,7 +22,8 @@
           }
         ],
         "apellido": "Zuñiga",
-        "ubicacion": "Santa Marta, Colombia"
+        "ubicacion": "Santa Marta, Colombia",
+        "ahora": "Estudiando Diseño Digital en la U. Sergio Arboleda"
       }
     }
   ]

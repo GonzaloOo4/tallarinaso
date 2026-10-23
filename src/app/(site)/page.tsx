@@ -32,6 +32,7 @@ export default async function Home() {
               </NameColorCycle>
             </h1>
           </LiquidText>
+          <NameColorHint />
           <p className="hero-lead"><HeroPhrase text={sitio.hero} /></p>
           <div className="hero-actions">
             <a className="button-primary" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
@@ -39,7 +40,12 @@ export default async function Home() {
           </div>
         </div>
         <div className="hero-strip">
-          <NameColorHint />
+          {sitio.ahora && (
+            <p className="hero-now">
+              <span className="meta">Ahora</span>
+              <span className="hero-now-text">{sitio.ahora}</span>
+            </p>
+          )}
           {reciente && (
             <a className="hero-recent" href={tienePagina(reciente) || !reciente.enlace ? `/proyectos/${reciente.slug}` : reciente.enlace}>
               <span className="meta">Proyecto reciente</span>

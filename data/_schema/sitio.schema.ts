@@ -4,6 +4,8 @@ export const SitioSchema = z.object({
   nombre: z.string().min(1),
   apellido: z.string().min(1).optional(),
   ubicacion: z.string().min(1).optional(),
+  // Qué está haciendo ahora; se muestra en la franja inferior del hero.
+  ahora: z.string().min(1).max(80).optional(),
   claim: z.string().min(1).max(60),
   hero: z.string().min(1),
   bio: z.string().min(1),
