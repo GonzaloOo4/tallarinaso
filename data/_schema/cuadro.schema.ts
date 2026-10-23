@@ -13,6 +13,8 @@ export const CuadroSchema = z.object({
   resumen: z.string().min(1),
   rol: z.string().min(1),
   coautores: z.array(z.string().min(1)).optional(),
+  // Detalles animados propios de la tarjeta; solo los proyectos que lo declaren los muestran.
+  ambiente: z.enum(['mar']).optional(),
   anio: z.number().int(),
   formato: z.array(z.string().min(1)),
   herramientas: z.array(z.string().min(1)),
