@@ -1,3 +1,4 @@
+import { NameColorSync } from '@/components/ColorimetriaPicker';
 import { FallingLeaves } from '@/components/FallingLeaves';
 import { Footer } from '@/components/Footer';
 import { GlassSpotlight } from '@/components/GlassSpotlight';
@@ -17,6 +18,7 @@ export default async function SiteLayout({ children }: Readonly<{ children: Reac
   return (
     <>
       {respetarReducirAnimaciones && <style>{REDUCED_MOTION_CSS}</style>}
+      <NameColorSync />
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <SiteHeader sitio={sitio} />
       <LightBeam respectReducedMotion={respetarReducirAnimaciones} />

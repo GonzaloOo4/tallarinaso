@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { ColorableName } from '@/components/ColorableName';
-import { ColorimetriaPicker } from '@/components/ColorimetriaPicker';
 import { HeroPhrase } from '@/components/HeroPhrase';
 import { LiquidText } from '@/components/LiquidText';
 import { MarqueeBanner } from '@/components/MarqueeBanner';
+import { NameColorCycle, NameColorHint } from '@/components/NameColorCycle';
 import { SeaDetails } from '@/components/SeaDetails';
 import { getCuadrosPublicados, getHabilidades, getSitio, tienePagina } from '@/lib/portfolio';
 import { cn } from '@/lib/utils';
@@ -24,10 +24,12 @@ export default async function Home() {
           <p className="eyebrow">Diseño digital{sitio.ubicacion && ` · ${sitio.ubicacion}`}</p>
           <LiquidText className="hero-liquid">
             <h1 id="hero-title">
-              <ColorableName className="hero-name">
-                <span className="hero-line">{sitio.nombre}</span>
-                {sitio.apellido && <> <span className="hero-line">{sitio.apellido}</span></>}
-              </ColorableName>
+              <NameColorCycle>
+                <ColorableName className="hero-name">
+                  <span className="hero-line">{sitio.nombre}</span>
+                  {sitio.apellido && <> <span className="hero-line">{sitio.apellido}</span></>}
+                </ColorableName>
+              </NameColorCycle>
             </h1>
           </LiquidText>
           <p className="hero-lead"><HeroPhrase text={sitio.hero} /></p>
@@ -37,10 +39,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="hero-strip">
-          <div className="hero-color">
-            <span className="meta">Tu color</span>
-            <ColorimetriaPicker onlyButtons />
-          </div>
+          <NameColorHint />
           {reciente && (
             <a className="hero-recent" href={tienePagina(reciente) || !reciente.enlace ? `/proyectos/${reciente.slug}` : reciente.enlace}>
               <span className="meta">Proyecto reciente</span>

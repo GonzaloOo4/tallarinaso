@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import type { Sitio } from '@data/_schema/sitio.schema';
 import { cn } from '@/lib/utils';
+import { ColorMenu } from './ColorMenu';
 import { HeaderClock } from './HeaderClock';
 import { Monogram } from './Monogram';
 import { ThemeToggle } from './ui/ThemeToggle';
@@ -37,6 +38,7 @@ export const SiteHeader = ({ sitio }: { sitio: Sitio }) => {
           {LINKS.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
         </nav>
         <div className="site-header-tools">
+          <ColorMenu />
           <ThemeToggle />
           <button
             className="site-menu-toggle"
