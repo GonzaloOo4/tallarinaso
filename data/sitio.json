@@ -1,18 +1,18 @@
 {
   "_meta": {
     "version": 1,
-    "lastModified": "2026-10-23T19:31:29.700Z",
+    "lastModified": "2026-10-23T20:25:30.421Z",
     "description": "Contenido editorial del sitio"
   },
   "records": [
     {
       "id": "sitio_001",
       "createdAt": "2026-09-02T00:00:00.000Z",
-      "updatedAt": "2026-10-23T19:31:29.700Z",
+      "updatedAt": "2026-10-23T20:25:30.421Z",
       "data": {
         "nombre": "Gonzalo",
         "claim": "Gonzalo Zuñiga — Diseño digital y sistemas narrativos",
-        "hero": "Diseñador digital que convierte ideas, investigación y narrativa en sistemas claros para experiencias que se pueden recorrer.",
+        "hero": "Diseñador digital que convierte ideas en realidad",
         "bio": "Soy estudiante de Diseño Digital en la Universidad Sergio Arboleda, sede Santa Marta. Trabajo desde la narrativa como estructura: primero entiendo las reglas, el mundo y la intención que sostienen una pieza; después encuentro la forma visual, editorial o interactiva para volverlos legibles.\n\nMe interesan los proyectos que conectan investigación, mundos narrativos y experiencias digitales con una mirada técnica y atenta al detalle.",
         "canales": [
           {
