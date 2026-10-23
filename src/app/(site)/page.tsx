@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { ColorableName } from '@/components/ColorableName';
 import { ColorimetriaPicker } from '@/components/ColorimetriaPicker';
+import { HeroPhrase } from '@/components/HeroPhrase';
 import { LiquidText } from '@/components/LiquidText';
 import { MarqueeBanner } from '@/components/MarqueeBanner';
 import { SeaDetails } from '@/components/SeaDetails';
@@ -13,29 +14,39 @@ export default async function Home() {
   const [sitio, habilidades, cuadros] = await Promise.all([getSitio(), getHabilidades(), getCuadrosPublicados()]);
   const grupos = Object.entries(Object.groupBy(habilidades, ({ grupo }) => grupo));
   const contacto = sitio.canales[0];
+  // Los cuadros vienen ordenados; el de mayor orden es el más reciente.
+  const reciente = cuadros.at(-1);
 
   return (
     <main id="contenido" className="site-main">
-      <section className="hero scene" aria-labelledby="hero-title">
-        <div className="glass-panel hero-glass">
+      <section className="hero hero-editorial" aria-labelledby="hero-title">
+        <div className="hero-copy">
           <p className="eyebrow">Diseño digital{sitio.ubicacion && ` · ${sitio.ubicacion}`}</p>
           <LiquidText className="hero-liquid">
             <h1 id="hero-title">
               <ColorableName className="hero-name">
-                {sitio.nombre}
-                {sitio.apellido && <> <span className="hero-surname">{sitio.apellido}</span></>}
+                <span className="hero-line">{sitio.nombre}</span>
+                {sitio.apellido && <> <span className="hero-line">{sitio.apellido}</span></>}
               </ColorableName>
             </h1>
           </LiquidText>
-          <p className="hero-lead">{sitio.hero}</p>
+          <p className="hero-lead"><HeroPhrase text={sitio.hero} /></p>
           <div className="hero-actions">
             <a className="button-primary" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
             {contacto && <a className="button-ghost" href={contacto.url}>Escríbeme <span aria-hidden="true">→</span></a>}
           </div>
+        </div>
+        <div className="hero-strip">
           <div className="hero-color">
-            <span className="meta">Colorea mi nombre</span>
+            <span className="meta">Tu color</span>
             <ColorimetriaPicker onlyButtons />
           </div>
+          {reciente && (
+            <a className="hero-recent" href={tienePagina(reciente) || !reciente.enlace ? `/proyectos/${reciente.slug}` : reciente.enlace}>
+              <span className="meta">Proyecto reciente</span>
+              <span className="hero-recent-title">{reciente.titulo} <span aria-hidden="true">→</span></span>
+            </a>
+          )}
         </div>
       </section>
 
