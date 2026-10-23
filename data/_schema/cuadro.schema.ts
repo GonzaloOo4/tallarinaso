@@ -12,16 +12,20 @@ export const CuadroSchema = z.object({
   titulo: z.string().min(1),
   resumen: z.string().min(1),
   rol: z.string().min(1),
+  coautores: z.array(z.string().min(1)).optional(),
   anio: z.number().int(),
   formato: z.array(z.string().min(1)),
   herramientas: z.array(z.string().min(1)),
   portada: ImagenSchema.optional(),
+  // Proyecto alojado en otra web: la tarjeta enlaza ahí en vez de a /proyectos/[slug].
+  enlace: z.string().url().optional(),
   proceso: z.array(z.unknown()).optional(),
   resultado: z.array(z.unknown()).optional(),
   publicado: z.boolean(),
   orden: z.number().int().optional(),
 }).superRefine((cuadro, context) => {
-  if (cuadro.publicado && (!cuadro.portada || !cuadro.proceso?.length || !cuadro.resultado?.length)) {
+  const contenidoCompleto = Boolean(cuadro.enlace) || Boolean(cuadro.proceso?.length && cuadro.resultado?.length);
+  if (cuadro.publicado && (!cuadro.portada || !contenidoCompleto)) {
     context.addIssue({ code: z.ZodIssueCode.custom, message: 'Un cuadro publicado debe estar completo.' });
   }
 });
