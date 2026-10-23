@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import type { Sitio } from '@data/_schema/sitio.schema';
 import { cn } from '@/lib/utils';
 import { HeaderClock } from './HeaderClock';
+import { Monogram } from './Monogram';
 import { ThemeToggle } from './ui/ThemeToggle';
 
 const LINKS = [
@@ -28,9 +29,8 @@ export const SiteHeader = ({ sitio }: { sitio: Sitio }) => {
   return (
     <header className={cn('site-header', open && 'is-open')}>
       <div className="site-header-bar">
-        <Link className="brand-mark" href="/" aria-label="Ir al inicio">
-          {sitio.nombre}
-          {sitio.apellido && <span className="brand-surname"> {sitio.apellido}</span>}
+        <Link className="brand-mark" href="/" aria-label={`${[sitio.nombre, sitio.apellido].filter(Boolean).join(' ')} — ir al inicio`}>
+          <Monogram className="brand-monogram" />
         </Link>
         {ciudad && <HeaderClock ciudad={ciudad} />}
         <nav className="site-nav" aria-label="Navegación principal">
