@@ -1,7 +1,7 @@
 {
   "_meta": {
     "version": 1,
-    "lastModified": "2026-10-23T20:55:03.199Z",
+    "lastModified": "2026-10-26T23:26:26.830Z",
     "description": "Cuadros del portafolio"
   },
   "records": [
@@ -114,6 +114,137 @@
             "texto": "La experiencia termina con una invitación a reflexionar sobre lo aprendido mientras el sol se oculta en el mar: aprendizaje y emoción unidos al lugar."
           }
         ]
+      }
+    },
+    {
+      "id": "cuadro_4cf5fd56-b20d-47b1-8570-30350498e6c7",
+      "createdAt": "2026-10-26T23:24:44.187Z",
+      "updatedAt": "2026-10-26T23:26:26.830Z",
+      "data": {
+        "numero": "02",
+        "slug": "ekta",
+        "titulo": "Ekta",
+        "resumen": "Un semestre diseñando desde la cultura del Caribe colombiano: investigación con los guardianes de la cultura y sus oficios, PlatiRoll —una mesa giratoria en cerámica tairona para compartir guisos con cayeye— y Nexus+, un stand móvil e interactivo para la carrera de Diseño Digital.",
+        "rol": "Diseño de producto y experiencia",
+        "anio": 2025,
+        "formato": [
+          "Investigación cultural",
+          "Diseño de producto",
+          "Co-creación",
+          "Stand interactivo"
+        ],
+        "herramientas": [
+          "Wix",
+          "Moodboard",
+          "Storyboard"
+        ],
+        "coautores": [
+          "Melany S. Mendoza",
+          "Gabriela Laborde",
+          "Miguelangel Tamaris"
+        ],
+        "portada": {
+          "src": "/proyectos/ekta.jpg",
+          "alt": "Logo de Ekta: una hoja dorada sobre una estrella vino tinto, con la palabra EKTA debajo"
+        },
+        "enlace": "https://wosakaka.wixsite.com/ekta",
+        "proceso": [
+          {
+            "titulo": "Los guardianes de la cultura",
+            "texto": "Diseñamos para los «Cultural Keepers»: personas de 25 a 45 años que preservan, promueven y transmiten las tradiciones de su comunidad. Valoran la autenticidad, la calidad y las experiencias que reflejen su identidad, y prefieren marcas que apoyen la cultura local."
+          },
+          {
+            "titulo": "Oficios y sabores del Caribe",
+            "items": [
+              {
+                "titulo": "Sombrero vueltiao",
+                "texto": "Prenda emblemática de la cultura zenú, tejida en caña flecha en Tuchín y Sampués."
+              },
+              {
+                "titulo": "Mochilas wayuu",
+                "texto": "Tejidas a mano por las mujeres wayuu de La Guajira; sus diseños representan su cosmogonía."
+              },
+              {
+                "titulo": "Cerámica tairona",
+                "texto": "Artesanía prehispánica de la Sierra Nevada de Santa Marta, modelada a mano y en torno."
+              },
+              {
+                "titulo": "Cocina del Caribe",
+                "texto": "Arroz de lisa, mote de queso y cayeye: platos que reúnen a las familias y sostienen la memoria de la región."
+              }
+            ]
+          },
+          {
+            "titulo": "Primeras ideas",
+            "items": [
+              {
+                "titulo": "PalmBeat",
+                "texto": "Audífonos hechos con la cáscara del coco; la carne se aprovecha para dulces artesanales, en apoyo a artesanos indígenas."
+              },
+              {
+                "titulo": "PlatiRoll",
+                "texto": "Una mesa giratoria en cerámica tairona que convierte servir los guisos típicos en una experiencia compartida."
+              }
+            ]
+          },
+          {
+            "titulo": "El recorrido del proyecto",
+            "items": [
+              {
+                "titulo": "Corte I",
+                "texto": "Grupo poblacional, oficios artesanales, contexto y concepto."
+              },
+              {
+                "titulo": "Corte II",
+                "texto": "Desarrollo formal, análisis funcional y de referentes, y co-creación con destinatarios y artesanos."
+              },
+              {
+                "titulo": "Corte III",
+                "texto": "Desarrollo del stand, análisis de referentes, co-creación, manual de Diseño Digital y montaje."
+              }
+            ]
+          }
+        ],
+        "resultado": [
+          {
+            "titulo": "PlatiRoll",
+            "texto": "Una mesa para cinco personas, fabricada en cerámica tairona, con un mecanismo de rotación que da acceso a distintos guisos guardados en compartimentos ocultos. Cada comensal arma su plato de cayeye mientras interactúa con los demás: comer se vuelve una experiencia sensorial y participativa que pone en valor técnicas ancestrales y la identidad gastronómica del Caribe.",
+            "items": [
+              {
+                "titulo": "Restaurantes típicos",
+                "texto": "Una experiencia inmersiva y diferenciada."
+              },
+              {
+                "titulo": "Ferias gastronómicas",
+                "texto": "Donde interactuar con la comida es parte del atractivo."
+              },
+              {
+                "titulo": "Plazas culturales",
+                "texto": "Espacios que promueven la tradición culinaria y la artesanía local."
+              }
+            ]
+          },
+          {
+            "titulo": "Nexus+",
+            "texto": "Un stand móvil para la carrera de Diseño Digital de La Sergio: un espacio abierto, sin recorridos guiados, para explorar a tu ritmo y descubrir tus pasiones.",
+            "items": [
+              {
+                "titulo": "Muro interactivo",
+                "texto": "Presenta los énfasis de la carrera —animación, videojuegos, diseño gráfico, interacción digital y 3D— con piezas visuales y el pensum."
+              },
+              {
+                "titulo": "Experiencias reales",
+                "texto": "Una impresora 3D en acción y microtalleres para probar herramientas digitales."
+              },
+              {
+                "titulo": "Montaje y desmontaje",
+                "texto": "Viaja sobre un remolque; los paneles se despliegan como acordeón, se arma un domo geodésico y todo vuelve a guardarse dentro del propio stand."
+              }
+            ]
+          }
+        ],
+        "publicado": true,
+        "orden": 2
       }
     }
   ]
