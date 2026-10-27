@@ -115,7 +115,6 @@ html { overflow-x: clip; }
 .hero-strip { justify-content: center; align-items: stretch; column-gap: 0; } .hero-now, .hero-recent { flex: 0 1 auto; align-content: start; justify-items: center; margin-left: 0; padding: 0 clamp(1.25rem, 3vw, 2.5rem); text-align: center; } @media (min-width: 701px) { .hero-strip { flex-wrap: nowrap; } } .hero-now + .hero-recent { border-left: 1px solid color-mix(in srgb, var(--color-ink) 22%, transparent); }
 @media (max-width: 700px) { .hero-strip { flex-direction: column; align-items: center; row-gap: var(--spacing-3); } .hero-now, .hero-recent { justify-items: center; padding: 0; text-align: center; } .hero-now + .hero-recent { padding-top: var(--spacing-3); border-top: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent); border-left: 0; } }
 .hero-strip .hero-now { margin: 0; }
-.fireflies { position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); z-index: -1; width: 100vw; height: 100%; pointer-events: none; }
 :root { --sierra-sky-1: #86b3d6; --sierra-sky-2: #c4dcec; --sierra-sky-3: #f1d9c2; --sierra-sun: #f7c47c; --sierra-r1: #b9c6d2; --sierra-r2: #9fb5b6; --sierra-r3: #82a097; --sierra-r4: #608470; --sierra-r5: #3f5f4b; --sierra-snow: #ffffff; --sierra-sea-1: #a8cbd4; --sierra-sea-2: #6f9fae; --sierra-wave: #ffffff; --sierra-morro: #34503f; --sierra-beacon: #f7c66b; --sierra-facet: #a2b0bf; --sierra-facet-2: #8aa3a5; --sierra-snow-shade: #c9d5e3; --sierra-morro-shade: #243b2d; --sierra-lighthouse: #f4f1ea; --sierra-cloud: #ffffff; }
 .dark { --sierra-sky-1: #070b18; --sierra-sky-2: #141a36; --sierra-sky-3: #28305c; --sierra-sun: #e8925f; --sierra-r1: #4a4e73; --sierra-r2: #343a5d; --sierra-r3: #262b4a; --sierra-r4: #1b1f39; --sierra-r5: #12152a; --sierra-snow: #cfd3e6; --sierra-sea-1: #2a2f53; --sierra-sea-2: #0d1124; --sierra-wave: #c3cdea; --sierra-morro: #0b0d1c; --sierra-beacon: #ffd27a; --sierra-facet: #383c5f; --sierra-facet-2: #2b3052; --sierra-snow-shade: #9aa0c0; --sierra-morro-shade: #05060f; --sierra-lighthouse: #c9ccdb; --sierra-cloud: #3d4268; --sierra-moon: #eeecdf; --sierra-moon-mare: #c9c5b2; --sierra-moonlight: #c9d4f2; --sierra-star: #e9edff; }
 .sierra { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; } .sierra svg { display: block; width: 100%; height: 100%; }
@@ -124,7 +123,6 @@ html { overflow-x: clip; }
 .sierra-wave path { fill: none; stroke: var(--sierra-wave); stroke-width: 1.4; stroke-linecap: round; animation: sierra-shimmer 7s ease-in-out infinite alternate; } .sierra-wave:nth-child(even) path { animation-delay: -3s; } .sierra-morro { fill: var(--sierra-morro); } .sierra-beacon { fill: var(--sierra-beacon); animation: sierra-beacon 4s ease-in-out infinite; }
 @keyframes sierra-shimmer { from { transform: translateX(-14px); } to { transform: translateX(14px); } } @keyframes sierra-beacon { 0%, 55%, 100% { opacity: 0.25; } 62%, 78% { opacity: 1; filter: drop-shadow(0 0 6px var(--sierra-beacon)); } }
 .sierra-glint { fill: none; stroke: var(--sierra-sun); stroke-width: 3; stroke-linecap: round; animation: sierra-shimmer 5s ease-in-out infinite alternate; } .sierra-glint:nth-of-type(odd) { animation-delay: -2.5s; }
-:root:not(.dark) .fireflies { display: none; }
 .sierra-facet { fill: url(#sierra-facet-fade); } .sierra-facet-soft { opacity: 0.6; } .sierra-snow-shade { fill: var(--sierra-snow-shade); opacity: 0.9; }
 .sierra-morro-shade { fill: var(--sierra-morro-shade); } .sierra-morro-reflection { fill: var(--sierra-morro); opacity: 0.28; } .sierra-lighthouse { fill: var(--sierra-lighthouse); }
 .sierra-beam { fill: url(#sierra-beam-r); transform-box: view-box; animation: sierra-sweep 7s ease-in-out infinite alternate; mix-blend-mode: screen; } :root:not(.dark) .sierra-beam { display: none; }
@@ -201,9 +199,9 @@ html { overflow-x: clip; }
 @media (max-width: 700px) { .site-footer { flex-wrap: nowrap; padding: var(--spacing-1) var(--spacing-1) var(--spacing-1) var(--spacing-3); } }
 @media (max-width: 400px) { .site-footer { gap: var(--spacing-1); } .footer-made { letter-spacing: 0.04em; } .footer-monogram { width: 1.7rem; height: 1.05rem; } .site-footer { padding-left: var(--spacing-2); } .footer-top { width: 2.2rem; height: 2.2rem; } }
 @media (max-width: 700px) { .site-footer { padding: var(--spacing-1); } } @media (max-width: 400px) { .site-footer { padding: var(--spacing-1); } }
-/* Celular: sin luciérnagas, y el carguero cruza solo la parte visible del paisaje (la escena se recorta a la derecha).
+/* Celular: el carguero cruza solo la parte visible del paisaje (la escena se recorta a la derecha).
    Sale desde detrás del Morro (x≈1050 en la escena) y termina fuera de la pantalla por la derecha. */
-@media (max-width: 700px) { .fireflies { display: none; } .sierra-ship-track { animation-name: ship-cross-movil; animation-duration: 45s; animation-delay: -12s; } }
+@media (max-width: 700px) { .sierra-ship-track { animation-name: ship-cross-movil; animation-duration: 45s; animation-delay: -12s; } }
 @keyframes ship-cross-movil { from { transform: translateX(2100px); } to { transform: translateX(3900px); } }
 /* Celular: la franja "Ahora / Proyecto reciente" en dos columnas compactas, pegada abajo, para que
    el bote pesquero (de día) se vea en el mar entre el horizonte y la franja. */
