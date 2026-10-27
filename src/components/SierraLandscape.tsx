@@ -225,6 +225,22 @@ const FishingBoat = ({ x, y }: { x: number; y: number }) => (
   </g>
 );
 
+// Etiqueta de mapa ilustrado: punto sobre el lugar, línea fina y texto mono pequeño.
+// Datos: Pico Cristóbal Colón 5.775 m (Alcaldía de Santa Marta, Procolombia);
+// faro actual del Morro de 1998 (dato aportado por Gonzalo).
+const SUMMIT_X = SIERRA_X + 305;
+const MapLabel = ({ from, to, lines, className }: { from: [number, number]; to: [number, number]; lines: string[]; className?: string }) => (
+  <g className={`sierra-label ${className ?? ''}`}>
+    <circle cx={from[0]} cy={from[1]} r="3" className="sierra-label-dot" />
+    <path d={`M${from[0]} ${from[1]} L${to[0]} ${to[1]} h18`} className="sierra-label-line" />
+    {lines.map((line, i) => (
+      <text key={line} x={to[0] + 26} y={to[1] + 5 + i * 21} className={i === 0 ? 'sierra-label-title' : 'sierra-label-sub'}>
+        {line}
+      </text>
+    ))}
+  </g>
+);
+
 export const SierraLandscape = () => (
   <div className="sierra" aria-hidden="true">
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMaxYMax slice">
@@ -326,6 +342,22 @@ export const SierraLandscape = () => (
         <path className="sierra-beam" style={{ transformOrigin: `${LAMP.x}px ${LAMP.y}px` }} d={`M${LAMP.x} ${LAMP.y} L${LAMP.x + 600} ${LAMP.y - 36} L${LAMP.x + 600} ${LAMP.y + 44} Z`} />
         <circle className="sierra-beacon" cx={LAMP.x} cy={LAMP.y} r="3.4" />
         <FishingBoat x={MORRO.x + 520} y={HORIZON + 50} />
+        <MapLabel
+          className="sierra-label-morro"
+          from={[MORRO.x + 0.8 * MORRO.w, MORRO.base - lerp(MORRO_SHAPE, 0.8) * MORRO.w + 4]}
+          to={[MORRO.x + MORRO.w + 36, MORRO.base - 58]}
+          lines={['El Morro', 'Faro de 1998']}
+        />
+      </g>
+
+      {/* Etiquetas de mapa sobre la Sierra (en su capa de paralaje); solo en pantallas anchas. */}
+      <g className="sierra-layer" style={{ '--depth': 0.02 } as React.CSSProperties}>
+        <MapLabel
+          from={[SUMMIT_X, sierraY(SUMMIT_X) + 8]}
+          // Hacia abajo y a la derecha, al cielo entre cumbres: arriba chocaría con el header en pantallas bajas.
+          to={[SUMMIT_X + 235, sierraY(SUMMIT_X) + 34]}
+          lines={['Sierra Nevada', 'Pico Colón · 5.775 m']}
+        />
       </g>
     </svg>
   </div>
