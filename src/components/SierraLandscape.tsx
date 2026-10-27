@@ -231,10 +231,10 @@ const FishingBoat = ({ x, y }: { x: number; y: number }) => (
 const SUMMIT_X = SIERRA_X + 305;
 const MapLabel = ({ from, to, lines, className }: { from: [number, number]; to: [number, number]; lines: string[]; className?: string }) => (
   <g className={`sierra-label ${className ?? ''}`}>
-    <circle cx={from[0]} cy={from[1]} r="3" className="sierra-label-dot" />
+    <circle cx={from[0]} cy={from[1]} r="2.4" className="sierra-label-dot" />
     <path d={`M${from[0]} ${from[1]} L${to[0]} ${to[1]} h18`} className="sierra-label-line" />
     {lines.map((line, i) => (
-      <text key={line} x={to[0] + 26} y={to[1] + 5 + i * 21} className={i === 0 ? 'sierra-label-title' : 'sierra-label-sub'}>
+      <text key={line} x={to[0] + 24} y={to[1] + 4 + i * 17} className={i === 0 ? 'sierra-label-title' : 'sierra-label-sub'}>
         {line}
       </text>
     ))}
@@ -353,9 +353,9 @@ export const SierraLandscape = () => (
       {/* Etiquetas de mapa sobre la Sierra (en su capa de paralaje); solo en pantallas anchas. */}
       <g className="sierra-layer" style={{ '--depth': 0.02 } as React.CSSProperties}>
         <MapLabel
-          from={[SUMMIT_X, sierraY(SUMMIT_X) + 8]}
-          // Hacia abajo y a la derecha, al cielo entre cumbres: arriba chocaría con el header en pantallas bajas.
-          to={[SUMMIT_X + 235, sierraY(SUMMIT_X) + 34]}
+          // Punto a media ladera y texto bajo la nieve: la cumbre queda pegada al header en pantallas anchas.
+          from={[SUMMIT_X + 40, sierraY(SUMMIT_X + 40) + 95]}
+          to={[SUMMIT_X + 210, sierraY(SUMMIT_X) + 235]}
           lines={['Sierra Nevada', 'Pico Colón · 5.775 m']}
         />
       </g>
