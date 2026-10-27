@@ -7,7 +7,18 @@ const HINT_KEY = 'nombre-color-pista-vista';
 
 export const DEFAULT_COLOR = '#4A6B52';
 export const DARK_COLOR = '#131311';
-export const SWATCHES = [DEFAULT_COLOR, '#B5502F', '#2F5FB5', '#B5992F', '#8A2FB5', DARK_COLOR];
+// Paleta de Santa Marta: cada color sale del paisaje o de un proyecto, y todos se leen bien
+// en tema claro (contraste ≥ 4.5:1 sobre el fondo). En tema oscuro se aclaran en CSS (OKLCH).
+export const SWATCH_NAMES: Record<string, string> = {
+  [DEFAULT_COLOR]: 'Sierra',
+  '#0E7C7B': 'Caribe',
+  '#B5502F': 'Tairona',
+  '#7A2350': 'Ekta',
+  '#8A6516': 'Cayeye',
+  '#3B4A9C': 'Noche',
+  [DARK_COLOR]: 'Carbón',
+};
+export const SWATCHES = Object.keys(SWATCH_NAMES);
 
 /** El negro no se ofrece en tema oscuro: se confundiría con el fondo. */
 export const visibleSwatches = (theme: string | undefined) => SWATCHES.filter((swatch) => theme !== 'dark' || swatch !== DARK_COLOR);

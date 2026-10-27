@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Bloque } from '@data/_schema/cuadro.schema';
 import { LikeOla } from '@/components/LikeOla';
+import { KitchenDetails } from '@/components/KitchenDetails';
 import { SeaDetails } from '@/components/SeaDetails';
 import { getCuadroPublicado, getCuadrosPublicados, tienePagina } from '@/lib/portfolio';
 import { cn } from '@/lib/utils';
@@ -50,7 +51,7 @@ export default async function ProyectoPage({ params }: Props) {
     <main id="contenido" className="site-main proyecto">
       <section className="proyecto-hero" aria-labelledby="proyecto-title">
         <Link className="arrow-link proyecto-back" href="/#proyectos"><span aria-hidden="true">←</span> Proyectos</Link>
-        <p className="eyebrow">Cuadro {cuadro.numero} · {cuadro.anio} · {cuadro.rol}</p>
+        <p className="eyebrow">{cuadro.anio} · {cuadro.rol}</p>
         <h1 id="proyecto-title" className="proyecto-title"><span className="colorable-name">{cuadro.titulo}</span></h1>
         {coautores && <p className="meta">En coautoría con {coautores}</p>}
         <p className="proyecto-lead">{cuadro.resumen}</p>
@@ -68,6 +69,7 @@ export default async function ProyectoPage({ params }: Props) {
         <figure className={cn('project-cover proyecto-cover', cuadro.ambiente && `project-ambiente-${cuadro.ambiente}`)}>
           <Image src={cuadro.portada.src} alt={cuadro.portada.alt} width={1600} height={1000} sizes="(max-width: 900px) 100vw, 880px" priority />
           {cuadro.ambiente === 'mar' && <SeaDetails />}
+          {cuadro.ambiente === 'cocina' && <KitchenDetails />}
         </figure>
       )}
 

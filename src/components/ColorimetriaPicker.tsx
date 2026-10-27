@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { DARK_COLOR, setNameColor, useNameColor, visibleSwatches } from '@/lib/name-color';
+import { DARK_COLOR, SWATCH_NAMES, setNameColor, useNameColor, visibleSwatches } from '@/lib/name-color';
 import { cn } from '@/lib/utils';
 
 /** Aplica el color elegido a todo el sitio (variable --name-color). Va una sola vez en el layout. */
@@ -35,7 +35,8 @@ export const ColorimetriaPicker = ({ className }: { className?: string }) => {
           type="button"
           className="colorimetria-swatch"
           style={{ background: swatch }}
-          aria-label={`Usar color ${swatch}`}
+          aria-label={`Color ${SWATCH_NAMES[swatch] ?? swatch}`}
+          title={SWATCH_NAMES[swatch] ?? swatch}
           aria-pressed={color === swatch}
           onClick={() => setNameColor(swatch)}
         />

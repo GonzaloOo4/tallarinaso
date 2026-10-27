@@ -19,9 +19,11 @@ export const CuadroSchema = z.object({
   titulo: z.string().min(1),
   resumen: z.string().min(1),
   rol: z.string().min(1),
+  // Tipo corto que acompaña al año en la tarjeta (ej. "Producto · Experiencia"); si falta, se usa el rol.
+  tipo: z.string().min(1).max(40).optional(),
   coautores: z.array(z.string().min(1)).optional(),
   // Detalles animados propios de la tarjeta; solo los proyectos que lo declaren los muestran.
-  ambiente: z.enum(['mar']).optional(),
+  ambiente: z.enum(['mar', 'cocina']).optional(),
   anio: z.number().int(),
   formato: z.array(z.string().min(1)),
   herramientas: z.array(z.string().min(1)),

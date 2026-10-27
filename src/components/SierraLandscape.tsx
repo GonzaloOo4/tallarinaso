@@ -53,11 +53,10 @@ const sierraY = (x: number) => {
   const sy = sx >= 0 ? lerp(SIERRA_REF, sx) : 205 - sx * 0.12 + Math.sin(x * 0.02) * 6;
   return SIERRA_BASE - (330 - sy) * SIERRA_V + (SIERRA_JAG[Math.round(x / 6)] ?? 0);
 };
-// Cada cumbre con el largo de su ladera izquierda (hasta su collado), para que la
-// sombra no invada la cara iluminada de la cumbre vecina.
+// Cumbres con cara en sombra y el largo de su ladera izquierda. El pico gemelo no lleva:
+// su ladera es tan corta que la sombra quedaba como una franja vertical.
 const SUMMITS = [
   { x: SIERRA_X + 305, span: 150 },
-  { x: SIERRA_X + 425, span: 48 },
 ];
 
 // La luz (sol de día, luna de noche) viene de la derecha: las caras en sombra son

@@ -1,14 +1,14 @@
 {
   "_meta": {
     "version": 1,
-    "lastModified": "2026-10-26T23:26:26.830Z",
+    "lastModified": "2026-10-26T23:39:55.802Z",
     "description": "Cuadros del portafolio"
   },
   "records": [
     {
       "id": "cuadro_935b9178-a71d-41e1-a1c6-f123acae88d9",
       "createdAt": "2026-10-23T17:55:00.464Z",
-      "updatedAt": "2026-10-23T20:55:03.199Z",
+      "updatedAt": "2026-10-26T23:39:55.802Z",
       "data": {
         "numero": "01",
         "slug": "caminata-por-el-tiempo",
@@ -113,13 +113,14 @@
             "titulo": "El cierre",
             "texto": "La experiencia termina con una invitación a reflexionar sobre lo aprendido mientras el sol se oculta en el mar: aprendizaje y emoción unidos al lugar."
           }
-        ]
+        ],
+        "tipo": "Experiencia"
       }
     },
     {
       "id": "cuadro_4cf5fd56-b20d-47b1-8570-30350498e6c7",
       "createdAt": "2026-10-26T23:24:44.187Z",
-      "updatedAt": "2026-10-26T23:26:26.830Z",
+      "updatedAt": "2026-10-26T23:39:55.802Z",
       "data": {
         "numero": "02",
         "slug": "ekta",
@@ -244,7 +245,9 @@
           }
         ],
         "publicado": true,
-        "orden": 2
+        "orden": 2,
+        "ambiente": "cocina",
+        "tipo": "Producto · Experiencia"
       }
     }
   ]

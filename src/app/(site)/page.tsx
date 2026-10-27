@@ -5,6 +5,7 @@ import { HeroPhrase } from '@/components/HeroPhrase';
 import { LiquidText } from '@/components/LiquidText';
 import { MarqueeBanner } from '@/components/MarqueeBanner';
 import { NameColorCycle, NameColorHint } from '@/components/NameColorCycle';
+import { KitchenDetails } from '@/components/KitchenDetails';
 import { SeaDetails } from '@/components/SeaDetails';
 import { getRespetarReducirAnimaciones } from '@/lib/configuracion';
 import { getCuadrosPublicados, getHabilidades, getSitio, tienePagina } from '@/lib/portfolio';
@@ -20,6 +21,8 @@ export default async function Home() {
   const contacto = sitio.canales[0];
   // Los cuadros vienen ordenados; el de mayor orden es el más reciente.
   const reciente = cuadros.at(-1);
+  // "Ahora" en dos niveles, como el proyecto reciente: lo principal y, tras " · ", el detalle.
+  const ahora = (sitio.ahora ?? '').split(' · ');
 
   return (
     <main id="contenido" className="site-main">
@@ -48,13 +51,15 @@ export default async function Home() {
           {sitio.ahora && (
             <p className="hero-now">
               <span className="meta">Ahora</span>
-              <span className="hero-now-text">{sitio.ahora}</span>
+              <span className="hero-now-text">{ahora[0]}</span>
+              {ahora.length > 1 && <span className="hero-sub">{ahora.slice(1).join(' · ')}</span>}
             </p>
           )}
           {reciente && (
             <a className="hero-recent" href={tienePagina(reciente) || !reciente.enlace ? `/proyectos/${reciente.slug}` : reciente.enlace}>
               <span className="meta">Proyecto reciente</span>
               <span className="hero-recent-title">{reciente.titulo} <span aria-hidden="true">→</span></span>
+              <span className="hero-sub">{reciente.tipo ?? reciente.rol}</span>
             </a>
           )}
         </div>
@@ -80,16 +85,20 @@ export default async function Home() {
                 const external = interno ? {} : { target: '_blank', rel: 'noopener noreferrer' };
                 return (
                   <article className={cn('project-box', cuadro.ambiente && `project-ambiente-${cuadro.ambiente}`)} key={cuadro.slug}>
-                    <span className="project-number">Cuadro {cuadro.numero}</span>
+                    <p className="project-label">
+                      <span className="project-year">{cuadro.anio}</span>
+                      <span className="project-type">{cuadro.tipo ?? cuadro.rol}</span>
+                    </p>
                     <div>
                       {cuadro.portada && (
                         <a className="project-cover" href={href} {...external} tabIndex={-1} aria-hidden="true">
                           <Image src={cuadro.portada.src} alt="" width={1600} height={1000} sizes="(max-width: 900px) 100vw, 760px" />
                           {cuadro.ambiente === 'mar' && <SeaDetails />}
+                          {cuadro.ambiente === 'cocina' && <KitchenDetails />}
                         </a>
                       )}
                       <h3><a className="editorial-link" href={href} {...external}>{cuadro.titulo}</a></h3>
-                      <p className="meta">{cuadro.rol} · {cuadro.anio} · {cuadro.formato.join(' · ')}</p>
+                      <p className="meta">{cuadro.rol} · {cuadro.formato.join(' · ')}</p>
                       {cuadro.coautores?.length ? <p className="meta">En coautoría con {listFormat.format(cuadro.coautores)}</p> : null}
                       <p>{cuadro.resumen}</p>
                       <a className="arrow-link" href={href} {...external}>
