@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ColorableName } from '@/components/ColorableName';
+import { ContactForm } from './contacto/ContactForm';
 import { HeroPhrase } from '@/components/HeroPhrase';
 import { LiquidText } from '@/components/LiquidText';
 import { MarqueeBanner } from '@/components/MarqueeBanner';
@@ -133,6 +134,7 @@ export default async function Home() {
               </a>
             ))}
           </div>
+          <ContactForm />
         </div>
       </section>
     </main>
