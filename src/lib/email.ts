@@ -6,7 +6,9 @@ import { getToken } from '@vercel/connect';
 const CONNECTOR = process.env.CONTACT_RESEND_CONNECTOR ?? 'resend/tallarinaso0o567';
 // Mientras no haya un dominio verificado en Resend, el remitente de pruebas es onboarding@resend.dev.
 const FROM = process.env.CONTACT_FROM ?? 'Portafolio Gonzalo <onboarding@resend.dev>';
-const TO = process.env.CONTACT_TO ?? 'gonzalo102pro@gmail.com';
+// Con onboarding@resend.dev, Resend solo entrega al correo dueño de la cuenta de Resend.
+// Para usar otro destinatario hay que verificar un dominio propio en resend.com/domains.
+const TO = process.env.CONTACT_TO ?? 'gonzalo.zuniga01@usa.edu.co';
 
 const escapeHtml = (value: string) =>
   value.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!);
