@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Bloque } from '@data/_schema/cuadro.schema';
+import { Comentarios } from '@/components/Comentarios';
 import { LikeOla } from '@/components/LikeOla';
 import { KitchenDetails } from '@/components/KitchenDetails';
 import { SeaDetails } from '@/components/SeaDetails';
@@ -86,6 +87,8 @@ export default async function ProyectoPage({ params }: Props) {
           <Bloques bloques={cuadro.resultado ?? []} />
         </div>
       </section>
+
+      <Comentarios slug={cuadro.slug} />
 
       <section className="proyecto-fin" aria-label="Cierre del proyecto">
         <p className="meta">Formato: {cuadro.formato.join(' · ')} — Herramientas: {cuadro.herramientas.join(' · ')}</p>

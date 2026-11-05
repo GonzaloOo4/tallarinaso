@@ -1,6 +1,7 @@
 'use client';
 
 import { useActionState, useEffect, useRef, useState } from 'react';
+import { keepFormOnSubmit } from '@/lib/use-keep-form';
 import { sendContact, type ContactState } from './actions';
 
 const INITIAL_STATE: ContactState = { status: 'idle' };
@@ -24,7 +25,7 @@ export const ContactForm = () => {
   }
 
   return (
-    <form ref={formRef} className="contact-form" action={action}>
+    <form ref={formRef} className="contact-form" action={action} onSubmit={keepFormOnSubmit(action)}>
       <div className="contact-form-row">
         <label>
           <span className="meta">Nombre</span>
