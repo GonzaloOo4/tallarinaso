@@ -9,3 +9,5 @@ data/_backups/*
 !data/_backups/.gitkeep
 *.tsbuildinfo
 .DS_Store
+.vercel
+.env*
