@@ -90,9 +90,12 @@ export default async function ProyectoPage({ params }: Props) {
 
       <Comentarios slug={cuadro.slug} />
 
-      <section className="proyecto-fin" aria-label="Cierre del proyecto">
-        <p className="meta">Formato: {cuadro.formato.join(' · ')} — Herramientas: {cuadro.herramientas.join(' · ')}</p>
-        <Link className="arrow-link" href="/#proyectos"><span aria-hidden="true">←</span> Volver a proyectos</Link>
+      <section className="glass-panel proyecto-fin" aria-label="Ficha del proyecto">
+        <dl className="proyecto-ficha">
+          <div><dt className="meta">Formato</dt><dd>{cuadro.formato.join(' · ')}</dd></div>
+          <div><dt className="meta">Herramientas</dt><dd>{cuadro.herramientas.join(' · ')}</dd></div>
+        </dl>
+        <Link className="arrow-link proyecto-fin-volver" href="/#proyectos"><span aria-hidden="true">←</span> Volver a proyectos</Link>
       </section>
     </main>
   );
